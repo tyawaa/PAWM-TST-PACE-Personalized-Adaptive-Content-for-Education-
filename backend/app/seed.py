@@ -1,5 +1,3 @@
-# Data contoh untuk demo, belum ditinjau guru.
-
 import json
 
 from .config import Settings

@@ -1,5 +1,3 @@
-# Backup database SQLite saat mode WAL aktif.
-
 import argparse
 import sqlite3
 from contextlib import closing

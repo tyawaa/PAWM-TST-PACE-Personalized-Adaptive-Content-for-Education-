@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "PACE",
+    "slug": "pace-learning",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "id.ac.itb.s18224122.pace"
+    },
+    "android": {
+      "package": "id.ac.itb.s18224122.pace",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "backgroundColor": "#0277BD",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font",
+      "expo-asset",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 180,
+          "backgroundColor": "#FFFFFF"
+        }
+      ]
+    ]
+  }
+}

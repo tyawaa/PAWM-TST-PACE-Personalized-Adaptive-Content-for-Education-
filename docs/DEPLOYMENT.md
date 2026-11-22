@@ -1,12 +1,12 @@
 # Deployment PACE ke STB
 
-Konfigurasi Compose sudah diperiksa secara statis. Build kontainer, STB ARM, gateway, dan HTTPS publik belum diuji.
+Panduan deployment layanan PACE menggunakan Docker Compose, Nginx, SQLite, dan Cloudflare Tunnel.
 
 ## Menjalankan kontainer
 
 Periksa arsitektur STB dengan `uname -m`, memori dengan `free -h`, serta instalasi Docker dengan `docker version` dan `docker compose version`. Dukungan image dan dependensi pada perangkat perlu diuji lewat build.
 
-Siapkan `.env` mengikuti [README](../README.md#menjalankan-lokal). Gunakan secret baru pada mesin deployment. Dari folder `PACE` di STB:
+Siapkan `.env` mengikuti [README](../README.md#menjalankan-lokal). Gunakan secret baru pada mesin deployment. Dari folder utama repository di STB:
 
 ```sh
 docker compose config --quiet
@@ -58,7 +58,7 @@ docker compose cp core-service:/data/pace-backup-01.db backups/pace-backup-01.db
 
 Gunakan nama baru setiap backup. Script menolak menimpa file dan memeriksa integritas hasilnya. Simpan backup serta `.env` secara privat.
 
-Untuk memulihkan, cadangkan kondisi saat ini dan hentikan semua proses yang memakai database. Jalankan dari folder `PACE`:
+Untuk memulihkan, cadangkan kondisi saat ini dan hentikan semua proses yang memakai database. Jalankan dari folder utama repository:
 
 ```sh
 docker compose stop core-service

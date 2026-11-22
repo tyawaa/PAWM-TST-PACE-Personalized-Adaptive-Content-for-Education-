@@ -4,11 +4,13 @@ Backend pembelajaran bahasa Inggris untuk siswa SD. PACE menyediakan materi, ase
 
 Tyara Penelope Lumban Gaol (18224122) dan Daniel Wicaksono Godjali (18224114).
 
+Aplikasi React Native (Expo) tersedia di folder [mobile](mobile/README.md). README aplikasi memuat cara menjalankan emulator Android, akun demo lokal, pengujian, dan persiapan integrasi API dua kelompok.
+
 ## Status Tugas 2
 
-Backend sudah berjalan secara lokal. Sebanyak 15 tes backend lulus; health, Swagger, OpenAPI, dan katalog juga sudah dicoba melalui Uvicorn. Konfigurasi Compose lulus `docker compose config --quiet`.
+Backend menyediakan API lokal melalui Uvicorn dan konfigurasi deployment melalui Docker Compose.
 
-Deployment Docker di STB dan akses HTTPS publik belum diuji. URL API publik dan URL repositori belum dicantumkan. Akun uji untuk dibagikan perlu dibuat saat deployment.
+Deployment STB dan URL API publik belum tersedia. Akun uji dibuat pada database server deployment.
 
 Pemakaian API minimal dua kelompok lain dikerjakan pada Tugas 3. Mitra belum ditetapkan; endpoint partner di proyek ini menyediakan akses ke layanan PACE.
 
@@ -22,7 +24,7 @@ FastAPI menjalankan logika asesmen dan rekomendasi. Nginx membatasi request. SQL
 
 ## Menjalankan lokal
 
-Gunakan Python 3.12 atau 3.13. Dari folder `PACE`, jalankan di PowerShell:
+Gunakan Python 3.12 atau 3.13. Dari folder utama repository (tempat README ini berada), jalankan di PowerShell:
 
 ```powershell
 python -m venv .venv
@@ -48,7 +50,7 @@ Buka `http://127.0.0.1:8000/docs`. Buat akun melalui `POST /api/auth/register`, 
 
 Database lokal berada di `backend/data/pace.db`. Seed menambahkan 3 konsep dan 15 soal; aman dijalankan ulang. Materi merupakan data contoh dan ditandai `reviewed: false`.
 
-Di Linux/macOS, gunakan `.venv/bin/python` dari folder `PACE`, atau `../.venv/bin/python` dari folder `backend`. Perintah menyalin konfigurasi: `cp .env.example .env`.
+Di Linux/macOS, gunakan `.venv/bin/python` dari folder utama repository, atau `../.venv/bin/python` dari folder `backend`. Perintah menyalin konfigurasi: `cp .env.example .env`.
 
 ## Endpoint
 
@@ -107,7 +109,7 @@ Format jawaban, respons, dan daftar error ada di [panduan API](docs/API.md).
 
 ## Akses kelompok lain
 
-Buat key acak dari folder `PACE`:
+Buat key acak dari folder utama repository:
 
 ```powershell
 .\.venv\Scripts\python.exe -c "import secrets; print(secrets.token_urlsafe(48))"
@@ -132,7 +134,7 @@ Buat akun uji `siswa_demo` melalui `POST /api/auth/register` di Swagger, seperti
 
 ## Docker dan pengumpulan
 
-Siapkan `.env`, lalu jalankan dari folder `PACE`:
+Siapkan `.env`, lalu jalankan dari folder utama repository:
 
 ```sh
 docker compose up -d --build
@@ -141,11 +143,11 @@ docker compose exec core-service python -m app.seed
 
 API lokal Docker tersedia di `http://127.0.0.1:8080/docs`. Ikuti [panduan deployment](docs/DEPLOYMENT.md) untuk STB, Cloudflare Tunnel, akun uji, dan backup.
 
-Pengumpulan Tugas 2 memerlukan URL API publik, URL repositori, dan `README.pdf`. Daftarkan URL serta dokumentasi di API Registry kelas. Perbarui status dan URL dalam README ini setelah deployment, lalu ekspor ulang ke PDF. Generator PDF tidak disertakan dalam proyek.
+Pengumpulan Tugas 2 mencakup URL API publik, URL repositori, dan `README.pdf`. URL serta dokumentasi API didaftarkan di API Registry kelas.
 
 ## Pengujian
 
-Dari folder `PACE` di PowerShell:
+Dari folder utama repository di PowerShell:
 
 ```powershell
 .\.venv\Scripts\python.exe -m pip install -r backend\requirements-dev.txt
@@ -155,4 +157,4 @@ cd backend
 ..\.venv\Scripts\python.exe -m ruff format --check .
 ```
 
-Tes memeriksa login, penilaian, prasyarat, submit berulang/bersamaan, kepemilikan sesi, pemisahan mitra, dan persistensi progres. Ruff belum dijalankan pada lingkungan lokal ini. TestClient mengeluarkan peringatan deprecation HTTPX dari Starlette; 15 tes tetap lulus.
+Tes memeriksa login, penilaian, prasyarat, submit berulang/bersamaan, kepemilikan sesi, pemisahan mitra, dan persistensi progres.
