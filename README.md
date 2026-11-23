@@ -2,7 +2,7 @@
 
 Backend pembelajaran bahasa Inggris untuk siswa SD. PACE menyediakan materi, asesmen, progres per konsep, dan rekomendasi belajar.
 
-Tyara Penelope Lumban Gaol (18224122) dan Daniel Wicaksono Godjali (18224114).
+Tyara Penelope Lumban Gaol (18224122) dan Daniel Wicaksana Godjali (18224114).
 
 Aplikasi React Native (Expo) tersedia di folder [mobile](mobile/README.md). README aplikasi memuat cara menjalankan emulator Android, akun demo lokal, pengujian, dan persiapan integrasi API dua kelompok.
 
